@@ -1,6 +1,6 @@
 Reproducible Research: Peer Assessment 2
 ==========================================
-Created by Xiaodan Zhang on July 25, 2014
+Created by Frank Fichtenmueller on 26/10/2016
 
 ## Impact of Severe Weather Events on Public Health and Economy in the United States
 
@@ -8,21 +8,14 @@ Created by Xiaodan Zhang on July 25, 2014
 In this report, we aim to analyze the impact of different weather events on public health and economy based on the storm database collected from the U.S. National Oceanic and Atmospheric Administration's (NOAA) from 1950 - 2011. We will use the estimates of fatalities, injuries, property and crop damage to decide which types of event are most harmful to the population health and economy. From these data, we found that excessive heat and tornado are most harmful with respect to population health, while flood, drought, and hurricane/typhoon have the greatest economic consequences.
 
 ### Basic settings
-```{r}
-echo = TRUE  # Always make code visible
-options(scipen = 1)  # Turn off scientific notations for numbers
-library(R.utils)
-library(ggplot2)
-library(plyr)
-require(gridExtra)
 ```
 
 ### Data Processing
 First, we download the data file and unzip it.
 ```{r}
-setwd("~/Desktop/Online Coursera/Coursera-Reproducible-Research/RepData_PeerAssessment2/")
+setwd("D:\Dropbox\Programming\Coursera_DataScience\Coursework\Reproducible_Research\Course_Project2\")
 
-if (!"stormData.csv.bz2" %in% dir("./data/")) {
+if (!"stormData.csv" %in% dir("./data/")) {
     print("hhhh")
     download.file("http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2", destfile = "data/stormData.csv.bz2")
     bunzip2("data/stormData.csv.bz2", overwrite=T, remove=F)
