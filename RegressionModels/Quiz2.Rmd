@@ -1,0 +1,178 @@
+---
+title: "Coursera_DS-Regression_Quiz2"
+author: "Frank Fichtenmueller"
+date: "26 October 2016"
+output: html_document
+---
+
+# Quiz 2
+
+
+####Question 1
+Consider the following data with x as the predictor and y as as the outcome.
+
+```{r}
+rm(list = ls())
+```
+
+```{r}
+x <- c(0.61, 0.93, 0.83, 0.35, 0.54, 0.16, 0.91, 0.62, 0.62)
+y <- c(0.67, 0.84, 0.6, 0.18, 0.85, 0.47, 1.1, 0.65, 0.36)
+```
+
+Give a P-value for the two sided hypothesis test of whether ??1 from a linear regression model is 0 or not.
+
+```{r}
+# Using the lm functions in R
+summary(lm(y ~ x))$coefficients[2,4]
+```
+
+####Question 2
+Consider the previous problem, give the estimate of the residual standard deviation.
+```{r}
+fit <- lm(y ~ x)
+e <- resid(fit)
+plot(y ~ x)
+abline(fit)
+plot(e ~ x)
+abline(h = 0)
+sqrt(sum(e*e)/(length(e)-2))
+sd(e) * sqrt((length(e) - 1)/(length(e) - 2))
+```
+
+####Question 3
+```{r}
+rm(list = ls())
+```
+
+```{r}
+data(mtcars)
+
+#Easy way
+fit <- lm(mpg ~ I(wt - mean(wt)), data = mtcars)
+confint(fit)
+```
+
+
+####Question 4
+Refer to the previous question. Read the help file for mtcars. What is the weight coefficient interpreted as?
+
+* The estimated expected change in mpg per 1 lb increase in weight.
+* The estimated 1,000 lb change in weight per 1 mpg increase.
+* The estimated expected change in mpg per 1,000 lb increase in weight. <--
+* It can't be interpreted without further information
+
+```{r}
+#Look up the documentation for the cars dataset
+?mtcars
+```
+
+
+
+####Question 5
+Consider again the mtcars data set and a linear regression model with mpg as predicted by weight (1,000 lbs). A new car is coming weighing 3000 pounds. 
+Construct a 95% prediction interval for its mpg. What is the upper endpoint?
+
+```{r}
+fit <- lm(mpg ~ wt, data=mtcars)
+coef <- summary(fit)$coefficients
+sigma = summary(fit)$sigma
+mpg <- predict(fit, newdata= data.frame(wt = 3))
+mpg + qt(0.975, df=fit$df) * sigma
+
+```
+
+
+####Question 6
+Consider again the mtcars data set and a linear regression model with mpg as predicted by weight (in 1,000 lbs). A "short" ton is defined as 2,000 lbs. Construct a 95% confidence interval for the expected change in mpg per 1 short ton increase in weight. Give the lower endpoint.
+
+```{r}
+fit <- lm(mpg ~ I(wt/2 - mean(wt/2)), data=mtcars)
+coef <- summary(fit)$coefficients
+coef[2,1] + -1 * qt(0.975, df = fit$df) * coef[2,2]
+
+```
+
+
+####Question 7 
+If my $X$ from a linear regression is measured in centimeters and I convert it to meters what would happen to the slope coefficient?
+
+* It would get multiplied by 100 <--
+* It would get divided by 10
+* It would get multiplied by 10
+* It would get divided by 100
+
+```{r}
+#given the Data
+x <- c(0.61, 0.93, 0.83, 0.35, 0.54, 0.16, 0.91, 0.62, 0.62)
+y <- c(0.67, 0.84, 0.6, 0.18, 0.85, 0.47, 1.1, 0.65, 0.36)
+
+#The transformation by diving trough 100 would cause...
+coef1 <- coef(lm( y ~ x))[2]
+coef2 <- coef(lm(y ~ I(x/100)))[2]
+coef1
+coef2
+```
+```{r}
+# Is the new coef 100 times larger than the old one?
+round(coef2,4) == round(coef1 * 100,4)
+```
+
+
+####Question 8
+I have an outcome, $Y$, and a predictor, $X$ and fit a linear regression model with $Y=\beta_0+\beta_1X+\epsilon$ to obtain $\hat\beta_0$ and $\hat\beta_1$. What would be the consequence to the subsequent slope and intercept if I were to refit the model with a new regressor, $X+c$ for some constant, $c$?
+
+* The new slope would be $c\hat\beta_1$
+* The new slope would be $\hat\beta_1+c$
+* The new intercept would be $\hat\beta_0-c\beta_1$ <--
+*The new intercept would be $\hat\beta_0+c\hat\beta_1$
+
+```{r}
+#Given the data:
+x <- c(0.61, 0.93, 0.83, 0.35, 0.54, 0.16, 0.91, 0.62, 0.62)
+y <- c(0.67, 0.84, 0.6, 0.18, 0.85, 0.47, 1.1, 0.65, 0.36)
+
+l = lm(y ~ x)
+lm(y ~ I((x + 10)))
+
+```
+
+####Question 9
+
+Refer back to the mtcars data set with mpg as an outcome and weight (wt) as the predictor. About what is the ratio of the the sum of the squared errors, $\sum_{i=1}^n(Y_i-\hat Y_i)^2$ when comparing a model with just an intercept (denominator) to the model with the intercept and slope (numerator)?
+```{r}
+rm(list = ls())
+
+```
+
+
+* 0.25 <--
+* 0.75
+* 0.50
+* 4.00
+
+```{r}
+fit1 <- lm(mpg ~ wt, data = mtcars)
+fit2 <- lm(mpg ~ 1, data = mtcars)
+1 - summary(fit1)$r.squared
+```
+
+
+####Question 10
+
+Do the residuals always have to sum to 0 in linear regression?
+
+* The residuals never sum to zero.
+* The residuals must always sum to zero. <--
+* If an intercept is included, the residuals most likely won't sum to zero.
+* If an intercept is included, then they will sum to 0. 
+
+```{r}
+#Given the data
+x <- c(0.61, 0.93, 0.83, 0.35, 0.54, 0.16, 0.91, 0.62, 0.62)
+y <- c(0.67, 0.84, 0.6, 0.18, 0.85, 0.47, 1.1, 0.65, 0.36)
+
+modelC = lm(y ~ x - 1)
+sum(modelC$fitted.values - y)
+```
+
