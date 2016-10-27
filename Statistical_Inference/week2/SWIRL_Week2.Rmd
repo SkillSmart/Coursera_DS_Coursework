@@ -1,0 +1,6 @@
+---
+title: "Coursera-DS_StatInference_SWIRL2"
+author: "Frank Fichtenmueller"
+date: "27 October 2016"
+output: html_document
+---
