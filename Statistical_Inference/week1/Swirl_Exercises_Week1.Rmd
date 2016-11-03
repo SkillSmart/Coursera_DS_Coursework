@@ -12,33 +12,40 @@ inference lets scientists formulate conclusions from data and quantify the
 uncertainty arising from using incomplete data.
 Which of the choices involves concrete data that doesn't require any
 inference or generalization?
+
 1: Testing the efficacy of a new drug
 2: Polling before an election to predict its outcome
 3: Constructing a medical image from fMRI data
 4: Recording the results of a statistics exam
 Selection: 4
+
 So statistical inference involves formulating conclusions using data AND
 quantifying the uncertainty associated with those conclusions. The
 uncertainty could arise from incomplete or bad data.
 Which of the following would NOT be a source of bad data?
+
 1: Selection bias
 2: Small sample size
 3: A randomly selected sample of population
 4: A poorly designed study
 Selection: 3
+
 So with statistical inference we use data to draw general conclusions about
 a population. Which of the following would a scientist using statistical
 inference techniques consider a problem?
+
 1: Our data sample is representative of the population
 2: Contaminated data
 3: Our study has no bias and is well-designed
 Selection: 2
+
 Which of the following is NOT an example of statistical inference in action?
 1: Determining a causative mechanism underlying a disease
 2: Estimating the proportion of people who will vote for a candidate
 3: Testing the effectiveness of a medical treatment
 4: Counting sheep
 Selection: 4
+
 We want to emphasize a couple of important points here. First, a statistic
 (singular) is a number computed from a sample of data. We use statistics to
 infer information about a population. Second, a random variable is an
@@ -52,6 +59,7 @@ identically distributed repetitions." The second is Bayesian in which the
 probability estimate for a hypothesis is updated as additional evidence is
 acquired. Both flavors require an understanding of probability so that's
 what the next lessons will cover.
+
 #### Probability. (
 In this lesson, we'll review basic ideas of probability, the study of
 quantifying the likelihood of particular events occurring. Note the
@@ -66,6 +74,7 @@ single, fair die once, how many outcomes are possible?
 3: 6
 4: Too many
 Selection: 3
+
 The probability of a particular outcome of an experiment is the ratio of the
 number of ways that outcome can occur to all possible outcomes of the
 experiment. Since there are 6 possible outcomes to the experiment of rolling
@@ -76,12 +85,14 @@ what is the probability of rolling a 2?
 3: 0
 4: 2/6
 Selection: 2
+
 What is the probability of rolling an even number?
 1: 0
 2: 1/3
 3: 1/2
 4: 1
 Selection: 3
+
 Since the probability of a particular outcome or event E is the ratio of
 ways that E could occur to the number of all possible outcomes or events,
 the probability of E, denoted P(E), is always between 0 and 1. Impossible
@@ -91,6 +102,7 @@ If you're doing an experiment with n possible outcomes, say e1, e2, , en,
 then the sum of the probabilities of all the outcomes is 1. If all the
 outcomes are equally likely, as in the case of a fair die, then the
 probability of each is 1/n.
+
 If A and B are two independent events then the probability of them both
 occurring is the product of the probabilities. P(A&B)  P(A) * P(B)
 Suppose you rolled the fair die twice in succession. What is the probability
@@ -100,6 +112,7 @@ of rolling two 4's?
 3: 1/6
 4: 2/6
 Selection: 2
+
 Suppose you rolled the fair die twice. What is the probability of rolling
 the same number two times in a row?
 1: 1/36
@@ -107,6 +120,7 @@ the same number two times in a row?
 3: 1/6
 4: 2/6
 Selection: 3
+
 Excellent work!
 Now consider the experiment of rolling 2 dice, one red and one green. Assume
 the dice are fair and not loaded. How many distinct outcomes are possible?
@@ -115,6 +129,7 @@ the dice are fair and not loaded. How many distinct outcomes are possible?
 3: 1
 4: 36
 Selection: 4
+
 If an event E can occur in more than one way and these ways are disjoint
 (mutually exclusive) then P(E) is the sum of the probabilities of each of
 the ways in which it can occur.
@@ -124,6 +139,7 @@ Rolling these two dice, what's the probability of rolling a 10?
 3: 0
 4: 2/36
 Selection: 1
+
 What sum is the most likely when rolling these two dice?
 1: 1
 2: 2

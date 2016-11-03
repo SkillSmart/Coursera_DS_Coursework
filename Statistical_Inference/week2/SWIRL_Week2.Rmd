@@ -4,3 +4,7 @@ author: "Frank Fichtenmueller"
 date: "27 October 2016"
 output: html_document
 ---
+```{r}
+#insert pdsfsaroundmean at 27%
+```
+

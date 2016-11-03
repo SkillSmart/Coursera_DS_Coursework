@@ -1,5 +1,6 @@
 # Quiz 1.
 # Problem 1.
+install.packages('rCharts')
 library(manipulate)
 myPlot <- function(s) {
   plot(cars$dist - mean(cars$dist), cars$speed - mean(cars$speed))
